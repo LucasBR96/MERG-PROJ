@@ -32,6 +32,7 @@ In a nutshell, algorithm splits the array in two ( roughly ) equal halves,sorts 
 
 The following gif illustrates the mergesort beautifully.
 
+![Merge_sort_animation2](https://user-images.githubusercontent.com/36990809/125359856-539b5400-e341-11eb-95ec-e2f34cb477da.gif)
 
 ## Non recursive version
 
