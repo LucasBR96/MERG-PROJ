@@ -151,6 +151,7 @@ queue * init_queue( ){
 	 queue * L = ( queue * ) malloc( sizeof( queue ) );
 	 L -> start = NULL;
 	 L -> end   = NULL;
+	 L -> n = 0;
 
 	 return L;
 }
@@ -168,6 +169,8 @@ void append( queue * L , node * nod ){
 		( L -> end ) -> next = q;
 		( L -> end ) = q;
 	}
+
+	( L -> n )++;
 }
 
 node * pop( queue * L ){
@@ -184,6 +187,8 @@ node * pop( queue * L ){
 	q -> head = NULL;
 	q -> next = NULL;
 	free( q );
+
+	( L -> n )--;
 
 	return nod;
 }
@@ -230,13 +235,21 @@ void iter_mergesort( arr * A, int demo ){
 		print_arr( A );
 		print_queue( L );
 	}
-
-	while( L -> start != L -> end ){
-		h1 = pop( L );
-		h2 = pop( L );
-		h = intercal( h1 , h2 );
-		append( L , h );
+	
+	int n;
+	while( ( L -> n ) > 1 ){
 		
+		n = ( L -> n );
+		for( int i = 0; i < ( n / 2 ); i++ ){ 
+			h1 = pop( L );
+			h2 = pop( L );
+			h = intercal( h1 , h2 );
+			append( L , h );
+		}if( n%2 ){  // for the sake of a stable sort
+			h = pop( L );
+			append( L , h );
+		}
+
 		if( demo )
 			print_queue( L );
 	}

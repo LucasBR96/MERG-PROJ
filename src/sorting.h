@@ -11,6 +11,7 @@ typedef struct qnd{
 typedef struct qq_ue{
 	q_node * start;
 	q_node * end;
+	int n; // <- number of nodes
 }queue;
 
 typedef struct{
